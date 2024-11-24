@@ -1,3 +1,15 @@
+/*******************************************************
+ * @file: SeparateChainingHashTable.java
+ * @description: This program implements a hash table using
+ *               separate chaining for collision handling.
+ *               It supports operations such as insert, remove,
+ *               search, and making the table empty.
+ *               Rehashing is performed when the load factor
+ *               exceeds the capacity.
+ * @author: Andrew Dwyer
+ * @date: November 23, 2024
+ *******************************************************/
+
 import java.util.LinkedList;
 import java.util.List;
 

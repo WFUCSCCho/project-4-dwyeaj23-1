@@ -1,3 +1,16 @@
+/*******************************************************
+ * @file: Proj4.java
+ * @description: This program processes a Pokemon dataset
+ *               and evaluates the performance of hash table
+ *               operations (insert, search, delete) using
+ *               separate chaining. The dataset is tested
+ *               in three configurations: sorted, shuffled,
+ *               and reversed. Results are measured and
+ *               logged in seconds to an analysis file.
+ * @author: Andrew Dwyer
+ * @date: November 23, 2024
+ *******************************************************/
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;

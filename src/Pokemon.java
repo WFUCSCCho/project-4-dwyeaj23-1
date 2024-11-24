@@ -5,7 +5,7 @@
  *               and provides methods for accessing and modifying each attribute. This class is used in conjunction
  *               with a Binary Search Tree (BST) to store and manage Pokemon data.
  * @author: Andrew Dwyer
- * @date: November 14, 2024
+ * @date: November 23, 2024
  */
 
 public class Pokemon implements Comparable<Pokemon> {
