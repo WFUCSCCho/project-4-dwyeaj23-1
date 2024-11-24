@@ -96,11 +96,11 @@ Insertion, search, and deletion running time (reversed):
 Document the source of your dataset and any modifications you made to it. Describe the results of your analysis and 
 how it compares to the theoretical performance of the hash table operations.
 
-Dataset Source: [// FINISH ME](https://www.kaggle.com/datasets/abcsds/pokemon)
+Dataset Source: https://www.kaggle.com/datasets/abcsds/pokemon
 
 Dataset Modifications ("None" if unchanged): None
 
-Result Analysis: // FINISH ME
+Result Analysis: Hash table operations are amortized O(1) under the assumption of a well-distributed hash function and a controlled load factor. However, real-world performance often deviates due to factors such as rehashing, memory allocation overhead, and collisions. Insertions, while theoretically O(1), may show increasing times with N due to the need for rehashing and expanding the table size. Similarly, searches and deletions, which are also expected to be O(1), can experience performance degradation as N grows, particularly if collisions lead to longer chains in the hash table. These practical considerations result in sub-linear but noticeable increases in operation times as the dataset size increases.
 
 ## Submission:
 
