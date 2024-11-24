@@ -82,22 +82,25 @@ it to this repository.
 
 Insertion, search, and deletion running time (already sorted):
 
-![Firefly picture of a cat 86147](https://github.com/user-attachments/assets/8b2d008e-3011-4979-97b8-fa2e9886a01a)
-
+<img width="535" alt="Screen Shot 2024-11-23 at 8 44 57 PM" src="https://github.com/user-attachments/assets/b5cae257-2548-44ee-868a-2d1bce7774b6">
 
 Insertion, search, and deletion running time (shuffled):
 
+<img width="534" alt="Screen Shot 2024-11-23 at 8 45 15 PM" src="https://github.com/user-attachments/assets/94089f1b-53b8-49e0-abe8-936b8e629f0d">
+
 Insertion, search, and deletion running time (reversed):
+
+<img width="534" alt="Screen Shot 2024-11-23 at 8 45 30 PM" src="https://github.com/user-attachments/assets/ee882519-7b26-4983-930c-5c73179800d9">
 
 ## 5. **Document your Dataset and Results**
 Document the source of your dataset and any modifications you made to it. Describe the results of your analysis and 
 how it compares to the theoretical performance of the hash table operations.
 
-Dataset Source: // FINISH ME
+Dataset Source: https://www.kaggle.com/datasets/abcsds/pokemon
 
-Dataset Modifications ("None" if unchanged): // FINISH ME
+Dataset Modifications ("None" if unchanged): None
 
-Result Analysis: // FINISH ME
+Result Analysis: Hash table operations are amortized O(1) under the assumption of a well-distributed hash function and a controlled load factor. However, real-world performance often deviates due to factors such as rehashing, memory allocation overhead, and collisions. Insertions, while theoretically O(1), may show increasing times with N due to the need for rehashing and expanding the table size. Similarly, searches and deletions, which are also expected to be O(1), can experience performance degradation as N grows, particularly if collisions lead to longer chains in the hash table. These practical considerations result in sub-linear but noticeable increases in operation times as the dataset size increases.
 
 ## Submission:
 
