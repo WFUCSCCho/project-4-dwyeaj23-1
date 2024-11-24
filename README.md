@@ -82,22 +82,25 @@ it to this repository.
 
 Insertion, search, and deletion running time (already sorted):
 
-![Firefly picture of a cat 86147](https://github.com/user-attachments/assets/8b2d008e-3011-4979-97b8-fa2e9886a01a)
-
+<img width="535" alt="Screen Shot 2024-11-23 at 8 44 57 PM" src="https://github.com/user-attachments/assets/b5cae257-2548-44ee-868a-2d1bce7774b6">
 
 Insertion, search, and deletion running time (shuffled):
 
+<img width="534" alt="Screen Shot 2024-11-23 at 8 45 15 PM" src="https://github.com/user-attachments/assets/94089f1b-53b8-49e0-abe8-936b8e629f0d">
+
 Insertion, search, and deletion running time (reversed):
+
+<img width="534" alt="Screen Shot 2024-11-23 at 8 45 30 PM" src="https://github.com/user-attachments/assets/ee882519-7b26-4983-930c-5c73179800d9">
 
 ## 5. **Document your Dataset and Results**
 Document the source of your dataset and any modifications you made to it. Describe the results of your analysis and 
 how it compares to the theoretical performance of the hash table operations.
 
-Dataset Source: // FINISH ME
+Dataset Source: https://www.kaggle.com/datasets/abcsds/pokemon
 
-Dataset Modifications ("None" if unchanged): // FINISH ME
+Dataset Modifications ("None" if unchanged): None
 
-Result Analysis: // FINISH ME
+Result Analysis: The graphs of hash table operations demonstrate a slight but measurable increase in time as N grows, suggesting that while hash table operations are theoretically O(1) on average, practical performance reflects real-world factors. For example, the insertion, search, and delete times all show an incremental rise of about 0.0001 seconds with larger datasets. This slight increase is attributed to rehashing overhead when the table needs to resize, as well as occasional collisions that result in longer chains within buckets. Although these factors introduce minor deviations from ideal O(1) performance, the graphs confirm that the growth is sub-linear, indicating the hash table remains highly efficient. Compared to alternative data structures like balanced trees or linked lists, which show much steeper increases in time, the hash table’s performance remains close to constant, validating its practicality for large datasets despite the observable trends.
 
 ## Submission:
 

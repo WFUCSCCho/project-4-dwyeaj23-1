@@ -1,3 +1,15 @@
+/*******************************************************
+ * @file: SeparateChainingHashTable.java
+ * @description: This program implements a hash table using
+ *               separate chaining for collision handling.
+ *               It supports operations such as insert, remove,
+ *               search, and making the table empty.
+ *               Rehashing is performed when the load factor
+ *               exceeds the capacity.
+ * @author: Andrew Dwyer
+ * @date: November 23, 2024
+ *******************************************************/
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -38,7 +50,16 @@ public class SeparateChainingHashTable<AnyType> {
      * @param x the item to insert.
      */
     public void insert(AnyType x) {
-        // FINISH ME
+        List<AnyType> whichList = theLists[myhash(x)];
+        if (!whichList.contains(x)) {
+            whichList.add(x);
+            currentSize++;
+
+            // Rehash if the current size exceeds the array length
+            if (currentSize > theLists.length) {
+                rehash();
+            }
+        }
     }
 
     /**
@@ -47,24 +68,32 @@ public class SeparateChainingHashTable<AnyType> {
      * @param x the item to remove.
      */
     public void remove(AnyType x) {
-        // FINISH ME
+        List<AnyType> whichList = theLists[myhash(x)];
+        if (whichList.contains(x)) {
+            whichList.remove(x);
+            currentSize--;
+        }
     }
 
     /**
      * Find an item in the hash table.
      *
      * @param x the item to search for.
-     * @return true if x is not found.
+     * @return true if x is found, false otherwise.
      */
     public boolean contains(AnyType x) {
-        // FINISH ME
+        List<AnyType> whichList = theLists[myhash(x)];
+        return whichList.contains(x);
     }
 
     /**
      * Make the hash table logically empty.
      */
     public void makeEmpty() {
-        // FINISH ME
+        for (int i = 0; i < theLists.length; i++) {
+            theLists[i].clear();
+        }
+        currentSize = 0;
     }
 
     /**
@@ -87,10 +116,12 @@ public class SeparateChainingHashTable<AnyType> {
         return hashVal;
     }
 
-    private void rehash() {
-        // FINISH ME
-    }
-
+    /**
+     * Internal method to compute the hash value for an item.
+     *
+     * @param x the item.
+     * @return the hash value.
+     */
     private int myhash(AnyType x) {
         int hashVal = x.hashCode();
 
@@ -99,6 +130,27 @@ public class SeparateChainingHashTable<AnyType> {
             hashVal += theLists.length;
 
         return hashVal;
+    }
+
+    /**
+     * Rehash the hash table to a larger size.
+     */
+    private void rehash() {
+        List<AnyType>[] oldLists = theLists;
+
+        // Create a new, larger array
+        theLists = new LinkedList[nextPrime(2 * theLists.length)];
+        for (int i = 0; i < theLists.length; i++) {
+            theLists[i] = new LinkedList<>();
+        }
+
+        // Copy the old data into the new array
+        currentSize = 0;
+        for (List<AnyType> list : oldLists) {
+            for (AnyType item : list) {
+                insert(item);
+            }
+        }
     }
 
     private static final int DEFAULT_TABLE_SIZE = 101;
@@ -145,7 +197,4 @@ public class SeparateChainingHashTable<AnyType> {
 
         return true;
     }
-
 }
-
-
