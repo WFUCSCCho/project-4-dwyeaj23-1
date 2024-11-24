@@ -88,9 +88,6 @@ public class Proj4 {
     /**
      * Perform insert, search, and delete operations on the hash table and measure their performance.
      */
-    /**
-     * Perform insert, search, and delete operations on the hash table and measure their performance.
-     */
     private static void performOperations(SeparateChainingHashTable<Pokemon> hashTable,
                                           ArrayList<Pokemon> dataset,
                                           PrintWriter writer,
@@ -106,7 +103,7 @@ public class Proj4 {
             hashTable.insert(pokemon);
         }
         endTime = System.nanoTime();
-        long insertTime = endTime - startTime;
+        double insertTime = (endTime - startTime) / 1e9; // Convert to seconds
 
         // Search
         startTime = System.nanoTime();
@@ -114,7 +111,7 @@ public class Proj4 {
             hashTable.contains(pokemon);
         }
         endTime = System.nanoTime();
-        long searchTime = endTime - startTime;
+        double searchTime = (endTime - startTime) / 1e9; // Convert to seconds
 
         // Delete
         startTime = System.nanoTime();
@@ -122,16 +119,16 @@ public class Proj4 {
             hashTable.remove(pokemon);
         }
         endTime = System.nanoTime();
-        long deleteTime = endTime - startTime;
+        double deleteTime = (endTime - startTime) / 1e9; // Convert to seconds
 
         // Print results to the console
         System.out.printf("Results for %s dataset:%n", listType);
-        System.out.printf("Insert Time: %d ns%n", insertTime);
-        System.out.printf("Search Time: %d ns%n", searchTime);
-        System.out.printf("Delete Time: %d ns%n%n", deleteTime);
+        System.out.printf("Insert Time: %.6f seconds%n", insertTime);
+        System.out.printf("Search Time: %.6f seconds%n", searchTime);
+        System.out.printf("Delete Time: %.6f seconds%n%n", deleteTime);
 
         // Write results to the analysis file
-        writer.printf("%s,%d,%d,%d,%d%n", listType, numLines, insertTime, searchTime, deleteTime);
+        writer.printf("%s,%d,%.6f,%.6f,%.6f%n", listType, numLines, insertTime, searchTime, deleteTime);
         writer.flush();
     }
 }
