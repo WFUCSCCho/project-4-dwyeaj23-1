@@ -35,21 +35,15 @@ public class Proj4 {
         SeparateChainingHashTable<Pokemon> hashTable = new SeparateChainingHashTable<>();
 
         // File to write analysis results
-        FileOutputStream fos = new FileOutputStream("analysis.txt", true); // Append mode
-        PrintWriter writer = new PrintWriter(fos);
+        try (FileOutputStream fos = new FileOutputStream("analysis.txt", true); // Append mode
+             PrintWriter writer = new PrintWriter(fos)) {
 
-        // Perform operations on each dataset type
-        System.out.println("Processing sorted Pokémon...");
-        performOperations(hashTable, sortedPokemon, writer, "Sorted");
-
-        System.out.println("Processing shuffled Pokémon...");
-        performOperations(hashTable, shuffledPokemon, writer, "Shuffled");
-
-        System.out.println("Processing reversed Pokémon...");
-        performOperations(hashTable, reversedPokemon, writer, "Reversed");
-
-        // Close writer
-        writer.close();
+            // Perform operations on each dataset type
+            System.out.println("Processing datasets...");
+            performOperations(hashTable, sortedPokemon, writer, "Sorted", numLines);
+            performOperations(hashTable, shuffledPokemon, writer, "Shuffled", numLines);
+            performOperations(hashTable, reversedPokemon, writer, "Reversed", numLines);
+        }
     }
 
     /**
@@ -94,11 +88,17 @@ public class Proj4 {
     /**
      * Perform insert, search, and delete operations on the hash table and measure their performance.
      */
+    /**
+     * Perform insert, search, and delete operations on the hash table and measure their performance.
+     */
     private static void performOperations(SeparateChainingHashTable<Pokemon> hashTable,
                                           ArrayList<Pokemon> dataset,
                                           PrintWriter writer,
-                                          String listType) {
+                                          String listType,
+                                          int numLines) {
         long startTime, endTime;
+
+        System.out.printf("Processing %s dataset with %d lines...%n", listType, numLines);
 
         // Insert
         startTime = System.nanoTime();
@@ -124,11 +124,14 @@ public class Proj4 {
         endTime = System.nanoTime();
         long deleteTime = endTime - startTime;
 
-        // Write results to file and console
-        System.out.printf("%s List - Insert: %d ns, Search: %d ns, Delete: %d ns%n",
-                listType, insertTime, searchTime, deleteTime);
+        // Print results to the console
+        System.out.printf("Results for %s dataset:%n", listType);
+        System.out.printf("Insert Time: %d ns%n", insertTime);
+        System.out.printf("Search Time: %d ns%n", searchTime);
+        System.out.printf("Delete Time: %d ns%n%n", deleteTime);
 
-        writer.printf("%s,%d,%d,%d%n", listType, insertTime, searchTime, deleteTime);
+        // Write results to the analysis file
+        writer.printf("%s,%d,%d,%d,%d%n", listType, numLines, insertTime, searchTime, deleteTime);
         writer.flush();
     }
 }
