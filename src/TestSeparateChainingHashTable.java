@@ -1,16 +1,3 @@
-/*******************************************************
- * @file: TestSeparateChainingHashTable.java
- * @description: This program tests the implementation of
- *               a separate chaining hash table. It performs
- *               a series of insert, remove, and search operations
- *               to verify the correctness of the hash table.
- *               The program checks that even numbers are present
- *               after insertion and removal, while odd numbers
- *               are properly removed.
- * @author: Andrew Dwyer
- * @date: November 23, 2024
- *******************************************************/
-
 public class TestSeparateChainingHashTable {
     public static void main( String [ ] args ) {
         SeparateChainingHashTable<Integer> H = new SeparateChainingHashTable<>( );
