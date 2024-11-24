@@ -81,12 +81,15 @@ each case. Take a screenshot of your graph and put them here by modifying this f
 it to this repository.
 
 Insertion, search, and deletion running time (already sorted):
+
 <img width="535" alt="Screen Shot 2024-11-23 at 8 44 57 PM" src="https://github.com/user-attachments/assets/b5cae257-2548-44ee-868a-2d1bce7774b6">
 
 Insertion, search, and deletion running time (shuffled):
+
 <img width="534" alt="Screen Shot 2024-11-23 at 8 45 15 PM" src="https://github.com/user-attachments/assets/94089f1b-53b8-49e0-abe8-936b8e629f0d">
 
 Insertion, search, and deletion running time (reversed):
+
 <img width="534" alt="Screen Shot 2024-11-23 at 8 45 30 PM" src="https://github.com/user-attachments/assets/ee882519-7b26-4983-930c-5c73179800d9">
 
 ## 5. **Document your Dataset and Results**
